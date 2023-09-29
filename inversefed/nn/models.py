@@ -17,14 +17,14 @@ from ..utils import set_random_seed
 
 def construct_model(model, num_classes=10, seed=None, num_channels=3, modelkey=None):
     """Return various models."""
-    if modelkey is None:
-        if seed is None:
-            model_init_seed = np.random.randint(0, 2**32 - 10)
-        else:
-            model_init_seed = seed
-    else:
-        model_init_seed = modelkey
-    set_random_seed(model_init_seed)
+    # if modelkey is None:
+    #     if seed is None:
+    #         model_init_seed = np.random.randint(0, 2**32 - 10)
+    #     else:
+    #         model_init_seed = seed
+    # else:
+    #     model_init_seed = modelkey
+    # set_random_seed(model_init_seed)
 
     if model in ['ConvNet', 'ConvNet64']:
         model = ConvNet(width=64, num_channels=num_channels, num_classes=num_classes)
@@ -167,8 +167,8 @@ def construct_model(model, num_classes=10, seed=None, num_channels=3, modelkey=N
     else:
         raise NotImplementedError('Model not implemented.')
 
-    print(f'Model initialized with random key {model_init_seed}.')
-    return model, model_init_seed
+    # print(f'Model initialized with random key {model_init_seed}.')
+    return model, None
 
 
 class ResNet(torchvision.models.ResNet):

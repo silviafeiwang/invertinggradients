@@ -15,6 +15,8 @@ def system_startup(args=None, defs=None):
     """Print useful system information."""
     # Choose GPU device and print status information:
     device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+    # if torch.has_mps:
+    #     device = torch.device("mps")
     setup = dict(device=device, dtype=torch.float)  # non_blocking=NON_BLOCKING
     print('Currently evaluating -------------------------------:')
     print(datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M%p"))
